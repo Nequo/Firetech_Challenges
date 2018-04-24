@@ -9,16 +9,15 @@ def validate_password(password):
     if len(password) < 6 or len(password) > 32:
         print("Your password must be between 6 and 32 characters long")
         return 0
-    else:
-        has_upper = 0
-        for char in password:
-            #Check each character to see if its a space
-            if char == " ":
-                print("Please don't use whitespaces")
-                return 0
-            elif char.isupper():
-                #Additionally, if any character is uppercase, set the value of has upper to 1
-                has_upper = 1
+    has_upper = 0
+    for char in password:
+        #Check each character to see if its a space
+        if char == " ":
+            print("Please don't use whitespaces")
+            return 0
+        elif char.isupper():
+            #Additionally, if any character is uppercase, set the value of has upper to 1
+            has_upper = 1
         #If none of the characters were uppercase, result is invallid
         if has_upper == 0:
             print("You need at least 1 uppercase character")
