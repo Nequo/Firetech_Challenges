@@ -4,6 +4,7 @@
 password = ""
 
 # Returns 1 if password matches criteria
+
 def validate_password(password):
     # First check if it has the correct length
     if len(password) < 6 or len(password) > 32:
@@ -28,7 +29,8 @@ def validate_password(password):
 
 # Define the initial user prompt and return the user's input
 def ask_input():
-    print("Please enter a password containing between 6 and 32 characters. Use at least one uppercase letter and no whitespace(spaces/tabs...)")
+    print("Please enter a password containing between 6 and 32 characters."
+          "Use at least one uppercase letter and no whitespace(spaces/tabs...)")
     x = input("> ")
     return x
 
@@ -46,18 +48,21 @@ def get_option():
             # The user entered a correct option, exit the loop
             return choice
 
-# Function to verify the password
-
-
-def verify_password():
+#Helper function to verify one character of the password
+def verify_password_char(number):
     global password
-    print("please enter the 1st character of your password")
-    first_char = input("> ")
-    if first_char != password[0]:
+    char = input("> ")
+    if char != password[number-1]:
         print("Incorrect")
     else:
         print("Correct")
 
+#Verify the first 2 password characters 
+def verify_password():
+    print("Please enter the 1st character of your password")
+    verify_password_char(1)
+    print("Please enter the 2nd character of your password")
+    verify_password_char(2)
 
 # Lists the available menu options
 def list_options():
@@ -74,7 +79,7 @@ def list_options():
     elif choice == 2:
         print("Exiting..")
 
-
+        
 def main():
     valid = 0
     while not valid:
